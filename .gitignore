@@ -1,0 +1,32 @@
+# OS/IDE
+.DS_Store
+.vscode/
+.idea/
+
+# Environment & secrets
+.env
+*.env.*
+
+# Logs
+*.log
+
+# Docker
+**/tmp/
+**/cache/
+**/vendor/
+**/node_modules/
+**/dist/
+**/build/
+docker-compose.override.yml
+
+# Frontend
+/frontend/node_modules/
+/frontend/.env
+/frontend/coverage/
+/frontend/dist/
+/frontend/build/
+
+# Backend specific (PHP/Slim)
+/backend/vendor/
+/backend/.env
+/backend/coverage/
