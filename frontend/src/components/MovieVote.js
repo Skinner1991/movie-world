@@ -22,16 +22,14 @@ function MovieVote({ movie, currentUserId, currentVote, onVote, isLoading }) {
         className={classes.iconVote}
         onClick={() => onVote(movie.id, 'like')}
       >
-        <FaThumbsUp color={'blue'} />
-       {movie.likes} {currentVote === 'like' && '(voted)'}
+        <FaThumbsUp color={'blue'} /> {movie.likes} {currentVote === 'like' && '(voted)'}
       </span>
       {' | '}
       <span
         className={classes.iconVote}
         onClick={() => onVote(movie.id, 'hate')}
       >
-        <FaThumbsDown color={'red'} /> 
-        {movie.hates} {currentVote === 'hate' && '(voted)'}
+        <FaThumbsDown color={'red'} /> {movie.hates} {currentVote === 'hate' && '(voted)'}
       </span>
     </>
   );
