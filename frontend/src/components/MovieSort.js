@@ -1,11 +1,10 @@
-import { useNavigate, useSearchParams, useNavigation } from 'react-router-dom';
+import { useNavigate, useSearchParams } from 'react-router-dom';
 import classes from './MoviesList.module.css';
 
 function MovieSort() {
   const [searchParams] = useSearchParams();
   const navigate = useNavigate();
-  const navigation = useNavigation();
-  const isLoading = navigation.state === 'loading';
+  
   const currentSort = searchParams.get('orderby') || '';
 
   const handleSortChange = (e) => {
@@ -23,7 +22,6 @@ function MovieSort() {
         <option value="like">Likes</option>
         <option value="hate">Hates</option>
       </select>
-      {isLoading && <span className={classes.loading}>Loading...</span>}
     </div>
   );
 }

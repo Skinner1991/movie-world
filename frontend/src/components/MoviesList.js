@@ -1,9 +1,13 @@
 import { useState } from 'react';
+import { useNavigation } from 'react-router-dom';
 import { getUserId } from '../util/auth';
 import { useVote } from '../hooks/useVote';
 import MovieItem from './MovieItem';
 import MovieSort from './MovieSort';
 import classes from './MoviesList.module.css';
+
+import { LoaderOverlay } from './LoaderOverlay';
+
 
 function MoviesList({ movies, count }) {
   const currentUserId = getUserId();
@@ -13,6 +17,9 @@ function MoviesList({ movies, count }) {
   const [movieVotes, setMovieVotes] = useState(() =>
     movies.map(movie => ({ ...movie, currentVote: null }))
   );
+
+  const navigation = useNavigation();
+  const isLoading = navigation.state === 'loading';
 
   const handleVote = async (movieId, voteType) => {
     setLoadingMovieId(movieId);
@@ -41,18 +48,21 @@ function MoviesList({ movies, count }) {
         <p>Found {count} movies</p>
         <MovieSort />
       </div>
-      <ul className={classes.list}>
-        {movieVotes.map(movie => (
-          <MovieItem
-            key={movie.id}
-            movie={movie}
-            currentUserId={currentUserId}
-            currentVote={movie.currentVote}
-            onVote={handleVote}
-            isVoting={loadingMovieId === movie.id}
-          />
-        ))}
-      </ul>
+      <div className={classes.listContainer}>
+        {isLoading && <LoaderOverlay />}
+        <ul className={classes.list}>
+          {movieVotes.map(movie => (
+            <MovieItem
+              key={movie.id}
+              movie={movie}
+              currentUserId={currentUserId}
+              currentVote={movie.currentVote}
+              onVote={handleVote}
+              isVoting={loadingMovieId === movie.id}
+            />
+          ))}
+        </ul>
+      </div>
     </div>
   );
 }

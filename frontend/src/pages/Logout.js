@@ -6,5 +6,5 @@ export function action() {
     localStorage.removeItem('username');
     localStorage.removeItem('expiration');
 
-    return redirect('/');
+    return redirect('/movies');
 }

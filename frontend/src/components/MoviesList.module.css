@@ -105,3 +105,12 @@
   font-size: 0.9rem;
   color: #888;
 }
+
+.listContainer {
+  position: relative;
+}
+
+.listContainer.loading ul {
+  opacity: 0.5;
+  pointer-events: none;
+}
