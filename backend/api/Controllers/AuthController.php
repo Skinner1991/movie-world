@@ -28,7 +28,7 @@ class AuthController
         $userId = $model->createUser($input['name'], $input['email'], $input['password']);
         $token = AuthHelper::makeJWTToken($userId, $input['name']);
 
-        return ResponseHelper::json($response, ['token' => $token, 'userId' => $userId]);
+        return ResponseHelper::json($response, ['token' => $token, 'userId' => $userId, 'username' => $input['name']]);
     }
 
     public function login(Request $request, Response $response): Response
@@ -44,6 +44,6 @@ class AuthController
         }
 
         $token = AuthHelper::makeJWTToken($user['id'], $user['name']);
-        return ResponseHelper::json($response, ['token' => $token, 'userId' => $user['id']]);
+        return ResponseHelper::json($response, ['token' => $token, 'userId' => $user['id'], 'username' => $user['name']]);
     }
 }

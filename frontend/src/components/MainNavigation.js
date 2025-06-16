@@ -1,12 +1,13 @@
 import { Form, NavLink, useRouteLoaderData, useLocation } from 'react-router-dom';
 
 import classes from './MainNavigation.module.css';
-import { getAuthToken, getUserId } from '../util/auth';
+import { getUserId, getUsername } from '../util/auth';
 
 function MainNavigation() {
 
   const token = useRouteLoaderData('root');
   const currentUserId = getUserId();
+  const currentUsername = getUsername();
   const location = useLocation();
   const isOnMoviesPage = location.pathname === '/movies';
 
@@ -58,7 +59,7 @@ function MainNavigation() {
             token && 
             (<li>
               <Form action="/logout" method="post">
-                <button >Logout {currentUserId}</button>
+                <button >Logout ({currentUsername})</button>
               </Form>
             </li>
           )}

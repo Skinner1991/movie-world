@@ -30,6 +30,11 @@ export function getUserId() {
   return userId;
 }
 
+export function getUsername() {
+  const userId = localStorage.getItem('username');
+  return userId;
+}
+
 export function tokenLoader() {
   const token = getAuthToken();
   return token;
