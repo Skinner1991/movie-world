@@ -1,4 +1,4 @@
-To start the API and frontend services, navigate to the root directory of the project (movie-world) and run the following command in your terminal:
+Begin by renaming .env.example to .env then start the API and frontend services, navigate to the root directory of the project (movie-world) and run the following command in your terminal:
 
 docker-compose up -d --build
 
