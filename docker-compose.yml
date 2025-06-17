@@ -17,6 +17,7 @@ services:
       - "8000:80"
     volumes:
       - ./backend:/var/www/html
+      - vendor_data:/var/www/html/vendor
     environment:
       DB_HOST: db
       DB_NAME: movies
@@ -41,3 +42,4 @@ services:
 
 volumes:
   db-data:
+  vendor_data:
