@@ -6,7 +6,6 @@ import { getUserId, getUsername } from '../util/auth';
 function MainNavigation() {
 
   const token = useRouteLoaderData('root');
-  const currentUserId = getUserId();
   const currentUsername = getUsername();
   const location = useLocation();
   const isOnMoviesPage = location.pathname === '/movies';

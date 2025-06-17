@@ -30,7 +30,8 @@ class AuthHelper
             'exp' => time() + 3600
         ];
 
-        $token = JWT::encode($payload, $_ENV['JWT_SECRET'], 'HS256');
+        $jwt_secret = $_ENV['JWT_SECRET'] ?? 'jwt_secret_key';
+        $token = JWT::encode($payload, $jwt_secret, 'HS256');
 
         return $token;
     }
